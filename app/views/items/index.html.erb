@@ -1,0 +1,19 @@
+<h1>To do:</h1>
+<%= link_to 'New', new_item_path %>
+<table>
+	<tr>
+		<th>Due by</th>
+		<th>Tag</th>
+		<th>Task</th>
+		<th>Status</th>
+	</tr>
+
+	<% @items.each do |item| %>
+		<tr>
+			<td><%= item.due %></td>
+			<td><%= Tag.find(item.tag_id).tag %></td>
+			<td><%= item.task %></td>
+			<td><%= item.status %></td>
+		</tr>
+	<% end %>
+</table>
