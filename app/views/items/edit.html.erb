@@ -1,0 +1,7 @@
+<h1>Edit Item</h1>
+
+<%= select(:item, :status, ["Incomplete", "Complete"]) %>
+
+<%= render 'form' %>
+
+<%= link_to 'Back', items_path %>
