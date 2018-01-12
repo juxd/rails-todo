@@ -1,24 +1,17 @@
-# README
+# CVWO Holiday Assignment
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Basic Information
+- Name: Julius Sander Nugroho
+- Matric No: A0166955M
 
-Things you may want to cover:
+## Features (complete & incomplete)
+- [x] Basic CRUD functionality for items
+- [x] Basic Tagging system for items
+- [x] View items by tag
+- [ ] CRUD functionality for tags
+- [ ] Search bar for tags
+- [ ] Sorting of items
+- [ ] User authentication
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Gems used
+Apart from the default Rails gems, I have used only used [Materialise-sass](https://github.com/mkhairi/materialize-sass) for styling.
