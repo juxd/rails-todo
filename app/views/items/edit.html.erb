@@ -2,6 +2,8 @@
 
 <%= select(:item, :status, ["Incomplete", "Complete"]) %>
 
-<%= render 'form' %>
-
+<div class="container">
+	<%= render 'form' %>
+<div class="container">
+	
 <%= link_to 'Back', items_path %>
