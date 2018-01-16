@@ -12,13 +12,16 @@
 
 ActiveRecord::Schema.define(version: 20171230075833) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "items", force: :cascade do |t|
     t.text "task"
     t.datetime "due"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "status"
-    t.integer "tag_id"
+    t.bigint "tag_id"
     t.index ["tag_id"], name: "index_items_on_tag_id"
   end
 
@@ -28,4 +31,5 @@ ActiveRecord::Schema.define(version: 20171230075833) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "items", "tags"
 end
