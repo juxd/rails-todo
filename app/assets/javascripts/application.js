@@ -14,5 +14,6 @@
 //= require jquery_ujs
 //= require rails-ujs
 //= require turbolinks
+//= require stupidtable
 //= require materialize
 //= require_tree .
