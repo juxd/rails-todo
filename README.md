@@ -8,7 +8,7 @@
 - [x] Basic CRUD functionality for items
 - [x] Basic Tagging system for items
 - [x] View items by tag
-- [ ] CRUD functionality for tags
+- [x] CRUD functionality for tags
 - [ ] Search bar for tags
 - [ ] Sorting of items
 - [ ] User authentication

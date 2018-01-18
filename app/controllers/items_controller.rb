@@ -21,7 +21,7 @@ class ItemsController < ApplicationController
 			render 'new'
 		end
 	end
-
+  
 	def update
 		@item = Item.find(params[:id])
 
@@ -30,6 +30,14 @@ class ItemsController < ApplicationController
     else
       render 'edit'
     end
+  end
+  
+  #Defining a new method to update status of task
+  def mark_as_done
+    @item = Item.find(params[:id])
+    @item.update(status: "Complete")
+ 
+    redirect_to items_path
   end
 
 	def destroy

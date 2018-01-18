@@ -1,6 +1,7 @@
-<h1><%= @tag.tag %></h1>
+<div class="container">
+<h3><%= @tag.tag %></h3>
 
-<table>
+<table class="highlight">
 	<tr>
 		<th>Due by</th>
 		<th>Tag</th>
@@ -8,7 +9,12 @@
 		<th>Status</th>
 		<th colspan="2"></th>
 	</tr>
-
+  
+  <% if @items.length == 0 %>
+    <tr>
+      <td colspan="6">No items have this tag</td>
+    </tr>
+  <% end %>
 	<% @items.each do |item| %>
 		<tr>
 			<td><%= item.due %></td>
@@ -22,3 +28,4 @@
 </table>
 
 <%= link_to 'Back', tags_path %>
+</div>

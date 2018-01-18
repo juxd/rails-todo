@@ -1,0 +1,27 @@
+<%= form_with model: @tag, local: true do |form| %>
+
+	<% if @tag.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@tag.errors.count, "error") %> prohibited
+        this tag from being saved:
+      </h2>
+      <ul>
+        <% @tag.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="row">
+    <div class="col s4">
+      <%= form.label :tag %><br>
+      <%= form.text_field :tag %>
+    </div>
+  </div>
+
+  <p>
+    <%= form.submit %>
+  </p>
+
+<% end %> 

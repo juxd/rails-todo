@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   get 'items/index'
 
-  resources :items
+  resources :items do
+    member do
+      get :mark_as_done
+    end
+  end
   resources :tags
 
   root 'items#index'
