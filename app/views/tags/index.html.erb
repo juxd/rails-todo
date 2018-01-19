@@ -6,7 +6,8 @@
 
 <div class="container">
 <h3>Tags</h3>
-<a class="waves-effect waves-light btn" href="tags/new">New Tag</a>
+
+<%= link_to 'New Tag', new_tag_path, class: "waves-effect waves-light btn" %>
 	<table class="highlight">
     <thead>
       <tr>
@@ -22,7 +23,7 @@
           <td><%= link_to "Show", tag_path(tag) %></td>
           <% if tag.id > 0 %>
             <td><%= link_to "Edit", edit_tag_path(tag) %></td>
-            <td><%= button_to "Delete", tag_path(tag), method: :delete %></td>
+            <td><%= link_to "Delete", tag_path(tag), method: :delete %></td>
           <% else %>
             <td colspan="2">You cannot delete this</td>
           <% end %> 

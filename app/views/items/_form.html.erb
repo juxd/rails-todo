@@ -2,10 +2,10 @@
 
 	<% if @item.errors.any? %>
     <div id="error_explanation">
-      <h2>
+      <h5>
         <%= pluralize(@item.errors.count, "error") %> prohibited
         this item from being saved:
-      </h2>
+      </h5>
       <ul>
         <% @item.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
@@ -36,7 +36,7 @@
     </div>
   </div>
 	<p>
-		<%= form.submit %>
+		<%= form.button 'Submit', class: "green btn waves-effect waves-light" %>
 	</p>
 
 <% end %>
