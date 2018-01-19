@@ -1,6 +1,6 @@
 class TagsController < ApplicationController
 	def index
-		@tags = Tag.all
+		@tags = Tag.order(:id)
 	end
 
 	def show
@@ -34,6 +34,17 @@ class TagsController < ApplicationController
 		else
 			render 'new'
 		end
+	end
+
+  def destroy
+    @items = Item.where(tag_id: params[:id])
+    @items.each do |item|
+      item.update(tag_id: "0")
+    end
+		@tag = Tag.find(params[:id])
+		@tag.destroy
+
+		redirect_to tags_path
 	end
 
 end

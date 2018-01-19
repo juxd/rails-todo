@@ -1,24 +1,33 @@
+<script>
+  $(function(){
+    $("table").stupidtable();
+  });
+</script>
+
 <div class="container">
 <h3>Tags</h3>
 <a class="waves-effect waves-light btn" href="tags/new">New Tag</a>
 	<table class="highlight">
-		<tr>
-			<th>Tag</th>
-			<th>Show Items</th>
-			<th colspan="2"></th>
-		</tr>
-
-		<% @tags.each do |tag| %>
-			<tr>
-				<td><%= tag.tag %></td>
-				<td><%= link_to "Show", tag_path(tag) %></td>
-				<% if tag.id > 0 %>
-					<td><%= link_to "Edit", edit_tag_path(tag) %></td>
-					<td><%= button_to "Delete", tag_path(tag), method: :delete %></td>
-				<% else %>
-					<td colspan="2">You cannot delete this</td>
-				<% end %> 
-			</tr>
-		<% end %>
+    <thead>
+      <tr>
+        <th width="30%" data-sort="string">Tag</th>
+        <th width="30%">Show Items</th>
+        <th colspan="2" width="40%">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @tags.each do |tag| %>
+        <tr>
+          <td><%= tag.tag %></td>
+          <td><%= link_to "Show", tag_path(tag) %></td>
+          <% if tag.id > 0 %>
+            <td><%= link_to "Edit", edit_tag_path(tag) %></td>
+            <td><%= button_to "Delete", tag_path(tag), method: :delete %></td>
+          <% else %>
+            <td colspan="2">You cannot delete this</td>
+          <% end %> 
+        </tr>
+      <% end %>
+    </tbody>
 	</table>
 </div>

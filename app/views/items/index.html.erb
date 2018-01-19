@@ -8,31 +8,34 @@
 <h3>Items</h3>
 <a class="waves-effect waves-light btn" href="items/new">New Item</a>
 	<table class="highlight">
-		<tr>
-			<th width="15%" data-sort="string">Due by</th>
-			<th width="10%" data-sort="string">Tag</th>
-			<th width="40%" data-sort="string">Task</th>
-			<th width="15%" data-sort="string">Status</th>
-			<th colspan="3" width="20%">Actions</th>
-		</tr>
-    
-    <% t = Time.now %>
+		<thead>
+      <tr>
+        <th width="15%" data-sort="string">Due by</th>
+        <th width="10%" data-sort="string">Tag</th>
+        <th width="40%" data-sort="string">Task</th>
+        <th width="15%" data-sort="string">Status</th>
+        <th colspan="3" width="20%">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% t = Time.now %>
 
-		<% @items.each do |item| %>
-			<tr>
-				<td><%= item.due %></td>
-				<td><%= Tag.find(item.tag_id).tag %></td>
-				<td><%= item.task %></td>
-				<td><%= item.status %><br>
-            <% if item.due < t && item.status == "Incomplete"%>
-              <span class="red-text text-darken-1">OVERDUE</span>
-            <% end %></td>
-				<td><%= link_to 'Edit', edit_item_path(item) %></td>
-				<td><%= link_to 'Delete', item_path(item), method: :delete, data: {confirm: 'Are you sure?'} %></td>
-        <td><% if item.status == "Incomplete" %>
-              <%= link_to 'Mark As Done', mark_as_done_item_path(item) %>
-            <% end %></td>
-			</tr>
-		<% end %>
+      <% @items.each do |item| %>
+        <tr>
+          <td><%= item.due %></td>
+          <td><%= Tag.find(item.tag_id).tag %></td>
+          <td><%= item.task %></td>
+          <td><%= item.status %><br>
+              <% if item.due < t && item.status == "Incomplete"%>
+                <span class="red-text text-darken-1">OVERDUE</span>
+              <% end %></td>
+          <td><%= link_to 'Edit', edit_item_path(item) %></td>
+          <td><%= link_to 'Delete', item_path(item), method: :delete, data: {confirm: 'Are you sure?'} %></td>
+          <td><% if item.status == "Incomplete" %>
+                <%= link_to 'Mark As Done', mark_as_done_item_path(item) %>
+              <% end %></td>
+        </tr>
+      <% end %>
+    </tbody>
 	</table>
 </div>
