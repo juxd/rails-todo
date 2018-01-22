@@ -1,6 +1,12 @@
 class ItemsController < ApplicationController
 	def index
 		@items = Item.order(:id)
+    searchMode = false
+    if params[:search]
+      @items = Item.where("task LIKE ?", "%#{params[:search]}%").order(:id)
+    else 
+      @items - Item.order(:id)
+    end
 	end
 
 	def new

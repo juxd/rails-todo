@@ -6,9 +6,18 @@
 
 <div class="container">
 <h3>Tags</h3>
-
-<%= link_to 'New Tag', new_tag_path, class: "waves-effect waves-light btn" %>
-	<table class="highlight">
+<div class="row">
+  <div class="col s6">
+    <%= link_to 'New Tag', new_tag_path, class: "waves-effect waves-light btn" %>
+	</div>
+  <div class="col s6">
+    <%= form_tag tags_path, method: :get do %>
+      <%= text_field_tag 'search', params[:search], class:"col s9 right-align" %>
+      <%= button_tag "Search Tags", name: nil, data: {disable_with: "Searching"}, class:"col s3 waves-effect waves-teal btn-flat" %>
+    <% end %>
+  </div>
+</div>
+  <table class="highlight">
     <thead>
       <tr>
         <th width="30%" data-sort="string">Tag</th>
@@ -17,6 +26,11 @@
       </tr>
     </thead>
     <tbody>
+      <% if @items.length == 0 %>
+        <tr>
+          <td colspan="6">No items found!</td>
+        </tr>
+      <% end %>
       <% @tags.each do |tag| %>
         <tr>
           <td><%= tag.tag %></td>

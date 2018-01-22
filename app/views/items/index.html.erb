@@ -6,8 +6,17 @@
 
 <div class="container">
 <h3>Items</h3>
-
-<%= link_to 'New Item', new_item_path, class: "waves-effect waves-light btn" %>
+<div class="row">
+  <div class="col s6">
+    <%= link_to 'New Item', new_item_path, class: "waves-effect waves-light btn left-align" %>
+  </div>
+  <div class="col s6">
+    <%= form_tag items_path, method: :get do %>
+      <%= text_field_tag 'search', params[:search], class:"col s9 right-align" %>
+      <%= button_tag "Search Items", name: nil, data: {disable_with: "Searching"}, class:"col s3 waves-effect waves-teal btn-flat" %>
+    <% end %>
+  </div>
+</div>
 	<table class="highlight">
 		<thead>
       <tr>
@@ -20,16 +29,20 @@
     </thead>
     <tbody>
       <% t = Time.now %>
-
+      <% if @items.length == 0 %>
+        <tr>
+          <td colspan="6">No items found!</td>
+        </tr>
+      <% end %>
       <% @items.each do |item| %>
         <tr>
           <td><%= item.due %></td>
           <td><%= Tag.find(item.tag_id).tag %></td>
           <td><%= item.task %></td>
           <td><%= item.status %><br>
-              <% if item.due < t && item.status == "Incomplete"%>
-                <span class="red-text text-darken-1">OVERDUE</span>
-              <% end %></td>
+            <% if item.due < t && item.status == "Incomplete"%>
+              <span class="red-text text-darken-1">OVERDUE</span>
+            <% end %></td>
           <td><%= link_to 'Edit', edit_item_path(item) %></td>
           <td><%= link_to 'Delete', item_path(item), method: :delete, data: {confirm: 'Are you sure?'} %></td>
           <td><% if item.status == "Incomplete" %>
