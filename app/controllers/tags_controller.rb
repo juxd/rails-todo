@@ -1,4 +1,6 @@
 class TagsController < ApplicationController
+  before_action :authorize
+
 	def index
 		@tags = Tag.order(:id)
      if params[:search]

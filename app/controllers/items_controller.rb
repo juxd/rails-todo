@@ -1,5 +1,7 @@
 class ItemsController < ApplicationController
-	def index
+	before_action :authorize
+
+  def index
 		@items = Item.order(:id)
     searchMode = false
     if params[:search]

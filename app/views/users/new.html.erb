@@ -1,0 +1,12 @@
+<div class="container">
+  <h3>Sign up</h3>
+  
+  <%= form_with model: @user, url: '/users', local: true do |form| %>
+   
+    <%= form.label :name %> <%= form.text_field :name %><br>
+    <%= form.label :email %> <%= form.text_field :email %><br>
+    <%= form.label :password %> <%= form.password_field :password %><br>
+    <%= form.submit "Submit" %><br>
+
+  <% end %>
+</div>  

@@ -1,4 +1,5 @@
 class Item < ApplicationRecord
-	belongs_to :tag
+	belongs_to :user
+  belongs_to :tag
 	validates :due, presence: true
 end
