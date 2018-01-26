@@ -2,8 +2,7 @@ class ItemsController < ApplicationController
 	before_action :authorize
 
   def index
-		@items = Item.order(:id)
-    searchMode = false
+		@items = Item.where(user_id: session[:user_id]).order(:id)
     if params[:search]
       @items = Item.where("task LIKE ?", "%#{params[:search]}%").order(:id)
     else 
@@ -22,7 +21,7 @@ class ItemsController < ApplicationController
 	def create
 		@item = Item.new(items_params)
 		@item.status = "Incomplete"
-
+    @item.user_id = session[:user_id]
 		if @item.save
 			redirect_to items_path
 		else

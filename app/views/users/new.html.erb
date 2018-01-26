@@ -1,12 +1,27 @@
 <div class="container">
-  <h3>Sign up</h3>
+  <h3 class="center-align">Sign up</h3>
+  <div class="row"><div class="col s4 offset-s4">
+	<% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h5>
+        <%= pluralize(@user.errors.count, "error") %> prohibited
+        this user from being saved:
+      </h5>
+      <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
   
   <%= form_with model: @user, url: '/users', local: true do |form| %>
    
     <%= form.label :name %> <%= form.text_field :name %><br>
     <%= form.label :email %> <%= form.text_field :email %><br>
     <%= form.label :password %> <%= form.password_field :password %><br>
-    <%= form.submit "Submit" %><br>
+    <%= form.button 'Submit', class: "green btn waves-effect waves-light center-align" %>
 
   <% end %>
+  </div></div>
 </div>  

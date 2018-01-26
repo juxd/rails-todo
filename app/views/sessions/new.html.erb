@@ -1,9 +1,24 @@
 <div class="container">
-  <h3>Log in</h3>
+  <h3 class="center-align">Log in</h3>
+  <div class="row"><div class="col s4 offset-s4">
+	<% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h5>
+        <%= pluralize(@user.errors.count, "error") %> prohibited
+        this user logging in:
+      </h5>
+      <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
   
   <%= form_tag do %>
     <%= text_field_tag :email %><br>
     <%= password_field_tag :password %><br>
     <%= submit_tag "Submit" %><br>
   <% end %>
+  </div></div>
 </div>  
