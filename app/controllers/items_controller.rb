@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
   def index
 		@items = Item.where(user_id: session[:user_id]).order(:id)
     if params[:search]
-      @items = Item.where("task LIKE ?", "%#{params[:search]}%").order(:id)
+      @items = Item.where("task ILIKE ?", "%#{params[:search]}%").order(:id)
     else 
       @items - Item.order(:id)
     end

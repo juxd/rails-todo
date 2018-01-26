@@ -4,7 +4,7 @@ class TagsController < ApplicationController
 	def index
 		@tags = Tag.order(:id)
      if params[:search]
-      @tags = Tag.where("tag LIKE ?", "%#{params[:search]}%").order(:id)
+      @tags = Tag.where("tag ILIKE ?", "%#{params[:search]}%").order(:id)
     else 
       @tags - Tag.order(:id)
     end
