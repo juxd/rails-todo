@@ -9,9 +9,13 @@
 - [x] Basic Tagging system for items
 - [x] View items by tag
 - [x] CRUD functionality for tags
-- [ ] Search bar for tags
-- [ ] Sorting of items
-- [ ] User authentication
+- [x] Search bar for tags
+- [x] Sorting of items
+- [x] User authentication *(well, mostly)*
+
+*Yay, that's almost all I wanted to implement! :tada:*
 
 ## Gems used
-Apart from the default Rails gems, I have used only used [Materialise-sass](https://github.com/mkhairi/materialize-sass) for styling.
+- **[Materialise-sass](https://github.com/mkhairi/materialize-sass)** for styling.
+- **pg** for Heroku deployment
+- **bcrypt** for password encryption
